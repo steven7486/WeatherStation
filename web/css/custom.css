@@ -23,6 +23,35 @@
     white-space: nowrap;
 }
 
+.navbar-right {
+    margin-right: 0px !important;
+}
+
+.panel-tool {
+    color: #C5C7CB;
+}
+
+.a-button{
+    padding: 5px !important;
+    color: #C5C7CB;
+    text-decoration: none;
+    background: transparent !important;
+}
+
+.a-button:hover{
+    padding: 5px;
+    color: #C5C7CB;
+    text-decoration: none;
+    background: #F5F7FA !important;
+}
+
+.a-button:focus{
+    padding: 5px;
+    color: #C5C7CB;
+    text-decoration: none;
+    background: transparent;
+}
+
 .ws-panel-title:before {
     display: table;
     content: " ";
