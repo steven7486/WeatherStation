@@ -1,0 +1,42 @@
+/*
+    Custom StyleSheet
+*/
+
+/* 
+    Created on : 2016/06/09, 19:03:53
+*/
+
+
+.ws-panel-title {
+    border-bottom: 2px solid #E6E9ED;
+    padding: 1px 5px 6px;
+    margin-bottom: 10px;
+}
+
+.ws-panel-title h4 {
+    margin: 5px 0 6px;
+    color: #7387A8;
+    display: block;
+    text-overflow: ellipsis;
+    float: left;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ws-panel-title:before {
+    display: table;
+    content: " ";
+}
+.ws-panel-title:after {
+    display: table;
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+    box-sizing: border-box;
+}
+.panel {
+    border: 1px solid #E6E9ED;
+    padding: 10px 17px;
+}
