@@ -1,0 +1,100 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2016/06/09, 22:25:36
+    Author     : H-Alice
+*/
+
+.blade-fast-rotate {
+    
+    width: 70px;
+    height: 70px;
+    background-image:  url('../images/blade.png');
+    background-size: 70px;
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 2000ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: spin;
+    -moz-animation-duration: 2000ms;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: spin;
+    -ms-animation-duration: 2000ms;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+    
+    animation-name: spin;
+    animation-duration: 2000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+.bar-big {
+    position: absolute;
+    width: 10px;
+    height: 66px;
+    background-image:  url('../images/bar.png');
+    background-size: 10px 66px;
+    top: 38px;
+    left: 29px;
+    
+}
+.blade-slow-rotate {
+    
+    width: 50px;
+    height: 50px;
+    background-image:  url('../images/blade.png');
+    background-size: 50px;
+        position: absolute;
+    top: 30px;
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 3500ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: spin;
+    -moz-animation-duration: 3500ms;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: spin;
+    -ms-animation-duration: 3500ms;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+    
+    animation-name: spin;
+    animation-duration: 3500ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+.bar-sm {
+    position: absolute;
+    width: 7px;
+    height: 47px;
+    background-image:  url('../images/bar.png');
+    background-size: 7px 47px;
+    top: 56px;
+    left: 21px;
+    
+}
+@-ms-keyframes spin {
+    from { -ms-transform: rotate(0deg); }
+    to { -ms-transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
