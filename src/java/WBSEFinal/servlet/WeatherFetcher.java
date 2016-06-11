@@ -1,7 +1,9 @@
 package WBSEFinal.servlet;
 
+import java.util.*;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -42,17 +44,20 @@ public class WeatherFetcher extends HttpServlet {
         String func = request.getParameter("func");
         if(func == null) func = ""; // Avoid NullPointer exception.
         
+        String location = request.getParameter("location");
+        if(location == null) location = "taipei";   // Default location: Taipei city.
+        
         switch (func) {
             
             case "forecast":
                 
-                response.getWriter().println(processQuery(FORECAST, "taipei"));
+                response.getWriter().println(getForecast(location));
                 break;
                 
             
             case "air":
 
-                response.getWriter().println(getAir("taipei"));
+                response.getWriter().println(getAir(location));
                 break;
                 
             default:
@@ -139,6 +144,61 @@ public class WeatherFetcher extends HttpServlet {
         return result.toString();
     }
 
+    private String getForecast(String location) throws IOException {
+        
+        
+        /* Containers */
+        List<String> weatherList = new ArrayList<>();   // Weather.
+        List<String> dateList = new ArrayList<>();      // Date.
+        List<Integer> hTempList = new ArrayList<>();    // High temp.
+        List<Integer> lTempList = new ArrayList<>();    // Low temp.
+        List<String> textList = new ArrayList<>();     // Weather details. 
+        JsonObject resTemp;
+        
+        /* Get result */
+        try (JsonReader resReader = Json.createReader(new java.io.StringReader(processQuery("*", location)))) {
+            /* Get query result */
+            resTemp = resReader.readObject();
+        }
+        
+        /* Json array of forecast data */
+        JsonArray forecastTemp = resTemp.getJsonObject("channel")
+                .getJsonObject("item")
+                .getJsonArray("forecast");
+        
+        for(int i = 0; i < forecastTemp.size(); i++) {
+            
+            JsonObject temp = forecastTemp.getJsonObject(i);
+            
+            int weatherCode = Integer.valueOf(temp.getString("code"));  // Get weather code.
+            String date = temp.getString("date");   // Get date.
+            int hTemp = Integer.valueOf(temp.getString("high"));  // Get high temp.
+            int lTemp = Integer.valueOf(temp.getString("low"));   // Get low temp.
+            String det = temp.getString("text");    // Get detail.
+            
+            weatherList.add(etc.Util.codeToWeather(weatherCode));
+            dateList.add(date);
+            hTempList.add(hTemp);
+            lTempList.add(lTemp);
+            textList.add(det);
+        }
+        
+        /* Rebuild json data */
+
+        JsonArrayBuilder resultBuilder = Json.createArrayBuilder();
+        
+        for(int i = 0; i < forecastTemp.size(); i++) {
+            resultBuilder.add(Json.createObjectBuilder()
+                    .add("date", dateList.get(i))
+                    .add("weather", weatherList.get(i))
+                    .add("highTemp", hTempList.get(i))
+                    .add("lowTemp", lTempList.get(i))
+                    .add("detail", textList.get(i))
+            );       
+        }
+        return resultBuilder.build().toString();
+    }
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
