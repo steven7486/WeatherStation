@@ -12,13 +12,23 @@
         <link href="css/custom.css" type="text/css" rel="StyleSheet" />
         <link href="css/blade_anim.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
+        <script src="jquery-2.2.4.min.js"></script>
         <title>JSP Page</title>
     </head>
     <body>
         <!-- Air status panel -->
         <br/>
-   
-            <div class="panel">
+
+        <div class="panel">
+
+            <script>
+                
+                
+                
+
+
+            </script>
+
             <div class="ws-panel-title" >
                 <h4>
                     Atmosphere
@@ -38,19 +48,21 @@
 
                 <div style="height: 150px; width: 125px;position: relative; float: left">
                     <div style="height: 136px; width: 70px; position: relative;float: left">
-                    <div class="blade-fast-rotate"></div>
-                    <div class="bar-big"></div>
+                        <div class="blade-fast-rotate"></div>
+                        <div class="bar-big"></div>
                     </div>
                     <div style="height: 136px; width: 50px; position: relative; float: left; left: -18px;">
-                    <div class="blade-slow-rotate"></div>
-                    <div class="bar-sm"></div>
+                        <div class="blade-slow-rotate"></div>
+                        <div class="bar-sm"></div>
                     </div>
                 </div>
                 <div >
                     Data test str.
+                    
+                    <p id="windspeed"></p>
                 </div>
             </div>
         </div>
-   
+
     </body>
 </html>
